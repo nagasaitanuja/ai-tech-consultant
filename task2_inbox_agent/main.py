@@ -1,4 +1,4 @@
-from task1.main import ask_brain
+from task1_knowledge_brain.main import ask_brain
 
 streak = 0
 autopilot = False
