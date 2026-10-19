@@ -1,21 +1,17 @@
-def create_sow(meeting_request):
-    """
-    Checks if requirement is an existing setting or custom code.
-    - Setting: 1 hour ($100)
-    - Custom code: 12 hours ($1,200)
-    """
-    brain_result = ask_knowledge_brain(meeting_request)
-    
-    if "Found in Brilliant Directories" in brain_result:
-        task_type = "Built-in Setting (No Custom Code Needed)"
-        hours = 1
-    else:
-        task_type = "Custom Developer Code"
-        hours = 12
-        
-    return (
-        f"REQUIREMENT: {meeting_request}\n"
-        f"TYPE: {task_type}\n"
-        f"ESTIMATED HOURS: {hours} hr(s)\n"
-        f"ESTIMATED COST: ${hours * 100}"
-    )
+# Task 3: Checks Task 1 to see if it's a built-in setting or custom code
+from task1.main import ask_brain
+
+def meeting_to_sow(client_request):
+    ans = ask_brain(client_request)
+    if "Found in Brilliant Directories" in ans:
+        return f"Request: {client_request}\nType: Built-in Setting | 1 hr ($100)"
+    return f"Request: {client_request}\nType: Custom Developer Code | 12 hrs ($1,200)"
+
+def run():
+    print("\n--- TASK 3: MEETING TO SCOPE OF WORK ---")
+    print(meeting_to_sow("We need Google maps radius search"))
+    print("----------------------------------------")
+    print(meeting_to_sow("We need a custom mobile app for iOS"))
+
+if __name__ == "__main__":
+    run()
