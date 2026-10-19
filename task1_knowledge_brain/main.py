@@ -17,14 +17,21 @@ except Exception:
         "https://support.brilliantdirectories.com/support/solutions/articles/5000673830-finance-payment-settings-setting-up-a-payment-gateway",
         "https://support.brilliantdirectories.com/support/solutions/articles/5000682639-google-maps-api-features-functions-and-key-considerations"
     ]
-
+    
 def ask_brain(question):
-    # Searches real sitemap links
-    q_words = [w.lower() for w in question.split() if len(w) > 3]
+    q_words = [
+        word.lower().strip("?!.,")
+        for word in question.split()
+        if len(word.strip("?!.,") ) > 2
+    ]
+
     for link in articles:
-        if any(w in link.lower() for w in q_words):
+        link_lower = link.lower()
+        if any(word in link_lower for word in q_words):
             return f"Found in Brilliant Directories Sitemap:\n{link}"
+
     return "I don't know this yet. Escalated to human expert."
+
 
 def run():
     print("--- TASK 1: KNOWLEDGE BRAIN (From Sitemap.xml) ---")
