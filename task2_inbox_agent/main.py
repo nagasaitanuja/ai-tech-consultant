@@ -3,39 +3,39 @@ from task1_knowledge_brain.main import ask_brain
 
 
 def reply_email(email_text):
-    answer = ask_brain(email_text)
+    message = email_text.strip()
+    answer = ask_brain(message)
 
     if "I don't know" in answer or "Escalated" in answer:
-        body = (
-            "Thank you for contacting support.\n\n"
-            "We could not find a confirmed answer in our "
-            "current knowledge base. Our support team will "
-            "need to review your request."
+        reply = (
+            "Thank you for your message.\n\n"
+            "We need to review your request to provide an "
+            "accurate response. Our support team will "
+            "follow up after checking the details."
+        )
+    elif "quote" in message.lower():
+        reply = (
+            "Thank you for confirming that the quote "
+            "has been approved.\n\n"
+            "We have noted your update. Please let us know "
+            "if you have any questions or need further "
+            "assistance with the next steps."
         )
     else:
-        body = (
+        reply = (
             "Thank you for contacting support.\n\n"
-            "Regarding your request, please refer to the "
-            "following documentation for guidance:\n\n"
+            "Based on our current knowledge base, here is "
+            "the relevant information:\n\n"
             f"{answer}\n\n"
-            "Please let us know if you need any further help."
+            "Please let us know if you need further help."
         )
 
     return (
         "Subject: Re: Your Support Request\n\n"
         "Hi,\n\n"
-        f"{body}\n\n"
+        f"{reply}\n\n"
         "Best regards,\n"
         "Support Team"
     )
 
-
-def run():
-    email = input("Enter the customer's email/message: ")
-    print("\n--- GENERATED EMAIL DRAFT ---\n")
-    print(reply_email(email))
-
-
-if __name__ == "__main__":
-    run()
 
