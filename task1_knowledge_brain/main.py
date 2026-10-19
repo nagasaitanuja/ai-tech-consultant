@@ -83,4 +83,4 @@ def ask_knowledge_brain(question):
         )
     else:
         pending_expert_questions.append(question)
-        return "ANSWER: I do not know the 
+        return "ANSWER: I do not know the answer. A question has been created for a human expert." 
