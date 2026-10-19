@@ -1,5 +1,4 @@
-# Task 3: Checks Task 1 to see if it's a built-in setting or custom code
-from task1.main import ask_brain
+from task1_knowledge_brain.main import ask_brain
 
 def meeting_to_sow(client_request):
     ans = ask_brain(client_request)
