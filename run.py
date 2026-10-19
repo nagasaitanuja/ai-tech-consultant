@@ -3,7 +3,6 @@ from task1_knowledge_brain.main import ask_brain
 from task2_inbox_agent.main import reply_email
 from task3_meeting_to_scope.main import meeting_to_sow
 
-
 def main():
     print("=== AI TECH CONSULTANT ===")
     print("1. Ask a knowledge-base question")
